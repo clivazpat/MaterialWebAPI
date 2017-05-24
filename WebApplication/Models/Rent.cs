@@ -6,13 +6,13 @@ using System.Web;
 
 namespace WebApplication.Models
 {
-    public class Material
+    public class Rent
     {
         [Key]
         public int Id { get; set; }
-        public Category Category { get; set; }
-        public string Name { get; set; }
-        public double Amount { get; set; }
-
+        public Material Material { get; set; }
+        public Client Client { get; set; }
+        public DateTime BeginDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

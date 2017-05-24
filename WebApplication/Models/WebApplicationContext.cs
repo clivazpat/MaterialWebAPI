@@ -26,5 +26,7 @@ namespace WebApplication.Models
         public System.Data.Entity.DbSet<WebApplication.Models.Country> Countries { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication.Models.Material> Materials { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication.Models.Rent> Rents { get; set; }
     }
 }

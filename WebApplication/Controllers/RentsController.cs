@@ -12,44 +12,44 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
-    public class MaterialsController : ApiController
+    public class RentsController : ApiController
     {
         private WebApplicationContext db = new WebApplicationContext();
 
-        // GET: api/Materials
-        public IQueryable<Material> GetMaterials()
+        // GET: api/Rents
+        public IQueryable<Rent> GetRents()
         {
-            return db.Materials.Include("Category");
+            return db.Rents.Include("Client.Country").Include("Material.Category");
         }
 
-        // GET: api/Materials/5
-        [ResponseType(typeof(Material))]
-        public IHttpActionResult GetMaterial(int id)
+        // GET: api/Rents/5
+        [ResponseType(typeof(Rent))]
+        public IHttpActionResult GetRent(int id)
         {
-            Material material = db.Materials.Find(id);
-            if (material == null)
+            Rent rent = db.Rents.Find(id);
+            if (rent == null)
             {
                 return NotFound();
             }
 
-            return Ok(material);
+            return Ok(rent);
         }
 
-        // PUT: api/Materials/5
+        // PUT: api/Rents/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMaterial(int id, Material material)
+        public IHttpActionResult PutRent(int id, Rent rent)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != material.Id)
+            if (id != rent.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(material).State = EntityState.Modified;
+            db.Entry(rent).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace WebApplication.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MaterialExists(id))
+                if (!RentExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace WebApplication.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Materials
-        [ResponseType(typeof(Material))]
-        public IHttpActionResult PostMaterial(Material material)
+        // POST: api/Rents
+        [ResponseType(typeof(Rent))]
+        public IHttpActionResult PostRent(Rent rent)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Materials.Add(material);
+            db.Rents.Add(rent);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = material.Id }, material);
+            return CreatedAtRoute("DefaultApi", new { id = rent.Id }, rent);
         }
 
-        // DELETE: api/Materials/5
-        [ResponseType(typeof(Material))]
-        public IHttpActionResult DeleteMaterial(int id)
+        // DELETE: api/Rents/5
+        [ResponseType(typeof(Rent))]
+        public IHttpActionResult DeleteRent(int id)
         {
-            Material material = db.Materials.Find(id);
-            if (material == null)
+            Rent rent = db.Rents.Find(id);
+            if (rent == null)
             {
                 return NotFound();
             }
 
-            db.Materials.Remove(material);
+            db.Rents.Remove(rent);
             db.SaveChanges();
 
-            return Ok(material);
+            return Ok(rent);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace WebApplication.Controllers
             base.Dispose(disposing);
         }
 
-        private bool MaterialExists(int id)
+        private bool RentExists(int id)
         {
-            return db.Materials.Count(e => e.Id == id) > 0;
+            return db.Rents.Count(e => e.Id == id) > 0;
         }
     }
 }

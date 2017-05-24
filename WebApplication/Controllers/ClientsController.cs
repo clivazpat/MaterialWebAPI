@@ -19,7 +19,7 @@ namespace WebApplication.Controllers
         // GET: api/Clients
         public IQueryable<Client> GetClients()
         {
-            return db.Clients;
+            return db.Clients.Include("Country");
         }
 
         // GET: api/Clients/5
