@@ -40,9 +40,9 @@ namespace WebApplication.Migrations
             Client client2 = new Client { Id = 2, Country = country3, Firstname = "Daniel", Lastname = "De Girolamo", Address = "Rue du Forum 22, 1920 Martigny", Phone = "+41 76 822 60 29", Mail = "degirolamo.daniel@gmail.com" };
             Client client3 = new Client { Id = 3, Country = country2, Firstname = "Maxime", Lastname = "Bétrisey", Address = "Route du Plat de Chelin 9, 1978 Lens", Phone = "+41 79 900 56 29", Mail = "maxime.betrisey@cobwebsite.ch" };
 
-            Material material1 = new Material { Id = 1, Category = category1, Name = "Atomic", Amount = 100 };
-            Material material2 = new Material { Id = 2, Category = category2, Name = "Borealis", Amount = 50 };
-            Material material3 = new Material { Id = 3, Category = category3, Name = "BMX", Amount = 50 };
+            Material material1 = new Material { Id = 1, Category = category1, Name = "Atomic", Price = 100.70M,  Amount = 100 };
+            Material material2 = new Material { Id = 2, Category = category2, Name = "Borealis", Price = 70.50M, Amount = 50 };
+            Material material3 = new Material { Id = 3, Category = category3, Name = "BMX", Price = 50.75M, Amount = 50 };
 
             context.Categories.AddOrUpdate(x => x.Id,
                     category1, category2, category3);
