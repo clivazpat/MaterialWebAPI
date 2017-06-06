@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
         [ResponseType(typeof(Rent))]
         public IHttpActionResult GetRent(int id)
         {
-            Rent rent = db.Rents.Find(id);
+            Rent rent = db.Rents.Include("Client.Country").Include("Material.Category").FirstOrDefault(p => p.Id == id);
             if (rent == null)
             {
                 return NotFound();
@@ -35,18 +35,14 @@ namespace WebApplication.Controllers
             return Ok(rent);
         }
 
+        [HttpPut]
         // PUT: api/Rents/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRent(int id, Rent rent)
+        public IHttpActionResult PutRent(Rent rent)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
-
-            if (id != rent.Id)
-            {
-                return BadRequest();
             }
 
             db.Entry(rent).State = EntityState.Modified;
@@ -57,14 +53,7 @@ namespace WebApplication.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+
             }
 
             return StatusCode(HttpStatusCode.NoContent);

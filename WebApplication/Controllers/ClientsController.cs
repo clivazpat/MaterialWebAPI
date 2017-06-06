@@ -90,6 +90,11 @@ namespace WebApplication.Controllers
         public IHttpActionResult DeleteClient(int id)
         {
             Client client = db.Clients.Find(id);
+            Rent[] rs = db.Rents.Where(a => a.Client.Id == id).ToArray();
+            foreach(Rent r in rs)
+            {
+                db.Rents.Remove(db.Rents.Find(r.Id));
+            }
             if (client == null)
             {
                 return NotFound();
