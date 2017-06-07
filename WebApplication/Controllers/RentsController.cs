@@ -67,8 +67,11 @@ namespace WebApplication.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            db.Materials.Attach(rent.Material);
+            db.Clients.Attach(rent.Client);
             db.Rents.Add(rent);
+            Material material = db.Materials.Find(rent.Material.Id);
+            material.Amount--;
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = rent.Id }, rent);
@@ -78,12 +81,19 @@ namespace WebApplication.Controllers
         [ResponseType(typeof(Rent))]
         public IHttpActionResult DeleteRent(int id)
         {
-            Rent rent = db.Rents.Find(id);
+            var q = from r in db.Rents.Include("Material").Where(s => s.Id == id)
+                    select r;
+
+            Rent rent = q.First();
+
             if (rent == null)
             {
                 return NotFound();
             }
 
+
+            Material m = db.Materials.Find(rent.Material.Id);
+            m.Amount++;
             db.Rents.Remove(rent);
             db.SaveChanges();
 
