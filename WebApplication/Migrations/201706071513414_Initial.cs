@@ -47,6 +47,7 @@ namespace WebApplication.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Amount = c.Double(nullable: false),
                         Category_Id = c.Int(),
                     })
@@ -60,7 +61,7 @@ namespace WebApplication.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         BeginDate = c.DateTime(nullable: false),
-                        EndDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(),
                         Client_Id = c.Int(),
                         Material_Id = c.Int(),
                     })

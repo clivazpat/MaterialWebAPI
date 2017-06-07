@@ -99,13 +99,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705240906168_Initial.cs" />
-    <Compile Include="Migrations\201705240906168_Initial.Designer.cs">
-      <DependentUpon>201705240906168_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705240923040_Initial1.cs" />
-    <Compile Include="Migrations\201705240923040_Initial1.Designer.cs">
-      <DependentUpon>201705240923040_Initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201706071513414_Initial.cs" />
+    <Compile Include="Migrations\201706071513414_Initial.Designer.cs">
+      <DependentUpon>201706071513414_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -129,11 +125,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705240906168_Initial.resx">
-      <DependentUpon>201705240906168_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705240923040_Initial1.resx">
-      <DependentUpon>201705240923040_Initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706071513414_Initial.resx">
+      <DependentUpon>201706071513414_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
