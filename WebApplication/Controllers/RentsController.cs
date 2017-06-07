@@ -74,7 +74,7 @@ namespace WebApplication.Controllers
             material.Amount--;
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = rent.Id }, rent);
+            return CreatedAtRoute("DefaultApi", new { id = rent.Id }, rent); 
         }
 
         // DELETE: api/Rents/5
