@@ -12,7 +12,13 @@ namespace WebApplication.Models
         public int Id { get; set; }
         public Material Material { get; set; }
         public Client Client { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime BeginDate { get; set; }
-        public DateTime EndDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? EndDate { get; set; }
     }
 }
